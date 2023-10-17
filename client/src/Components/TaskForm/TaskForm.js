@@ -8,11 +8,14 @@ function TaskForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Make a POST request to your API
-    axios.post('/tasks', formData)
+    console.log("firststart")
+    
+    axios.post('http://localhost:5000/tasks', formData)
       .then((response) => {
         console.log('New task created:', response.data);
         // Add logic to handle the response, e.g., show a success message.
@@ -23,7 +26,6 @@ function TaskForm() {
       });
   };
 
-  
   return (
     <div>
       <h2>Create a New Task</h2>
