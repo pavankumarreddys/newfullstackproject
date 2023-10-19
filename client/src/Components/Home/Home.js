@@ -1,8 +1,15 @@
-import React from 'react'
+import * as React from 'react';
+import Navbar from '../common/Navbar';
 
 const Home = () => {
   return (
-    <div> hello Home</div>
+    <div className='container-fluid'>
+      <div className='row'>
+        <div className='col-12'>
+            <Navbar/>
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -36,9 +36,8 @@ app.post('/tasks', (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
-    var { name, email, password } = req.body;
-    console.log("password",password)
-    var hashedPassword = await bcrypt.hash(password, 10);
+    const { name, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
     const selectedQuery = "SELECT * FROM userlogin WHERE email = ?";
     const values = [email];
 
@@ -52,8 +51,6 @@ app.post('/signup', async (req, res) => {
             }
         });
     });
-
-    console.log("first",dbuser)
 
     if (dbuser === undefined) {
         const sql = "INSERT INTO userlogin (`name`, `email`, `password`) VALUES (?, ?, ?)";
@@ -90,9 +87,7 @@ app.post('/login', async (req, res) => {
         }
 
         const user = data[0];
-        console.log("user",user)
         const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
-        console.log("isPasswordValid",isPasswordValid)
         if (isPasswordValid) {
             // Passwords match, user is authenticated
             return res.json("Login Successful");

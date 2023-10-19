@@ -4,6 +4,8 @@ import TaskForm from './Components/TaskForm/TaskForm'
 import Home from './Components/Home/Home'
 import Login from './Components/Authentication/Login'
 import Signup from './Components/Authentication/Signup'
+import ProtectedRoute from './Components/ProtectedRoute'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 const [myData,setMyData] = useState([{}])
@@ -17,13 +19,15 @@ const [myData,setMyData] = useState([{}])
 // })
 //   },[])
 
-  
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Login/>}/>
-        <Route exact path="/signup" element={<Signup/>}/>
-        <Route exact path="/home" element={<Home/>}/>
+      <Route exact path="/login" element={<Login/>}/>
+      <Route exact path="/signup" element={<Signup/>}/>
+        <Route element = {<ProtectedRoute/>}>
+          <Route exact path="/" element={<Home/>}/>
+        </Route>
       </Routes>
     </BrowserRouter>
     

@@ -12,18 +12,15 @@ function TaskForm() {
   };
 
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Make a POST request to your API
+    console.log("firststart",formData)
     
-    const formData1 ={
-        name:"pavan",
-        email:"fehgfd@gmail.com",
-        password:"123456789"
-    }
-console.log("first",formData1)
-    axios.post('http://localhost:5000/signup', formData1)
+    axios.post('http://localhost:5000/tasks', formData)
       .then((response) => {
         console.log('New task created:', response.data);
         toast.success('Task created successfully', {
@@ -39,29 +36,6 @@ console.log("first",formData1)
         // Handle errors, e.g., show an error message.
       });
   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-
-//     // Make a POST request to your API
-//     console.log("firststart",formData)
-    
-//     axios.post('http://localhost:5000/tasks', formData)
-//       .then((response) => {
-//         console.log('New task created:', response.data);
-//         toast.success('Task created successfully', {
-//             position: toast.POSITION.TOP_CENTER
-//           });
-//         // Add logic to handle the response, e.g., show a success message.
-//       })
-//       .catch((error) => {
-//         console.error('Error creating a task:', error.message);
-//         toast.error('Error creating a task', {
-//             position: toast.POSITION.TOP_CENTER
-//           });
-//         // Handle errors, e.g., show an error message.
-//       });
-//   };
 
   return (
     <div>

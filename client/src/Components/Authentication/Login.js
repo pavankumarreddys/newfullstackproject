@@ -23,9 +23,9 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      <Link color="inherit" href="https://www.linkedin.com/in/sannala-pavan-kumar-reddy-748123154/">
+        Pavan Info
+      </Link>
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -60,8 +60,9 @@ export default function Login() {
                 toast.success('Login Successfull', {
                     position: toast.POSITION.TOP_CENTER
                   });
+                  localStorage.setItem("isLogin",true)
                 setTimeout(()=>{
-                    navigate("/home")
+                    navigate("/")
                 },2000)
             }else{
                 toast.warning("User doesn't exist", {
@@ -94,6 +95,13 @@ export default function Login() {
     const strongPasswordRegex = /^(?=.*[A-Za-z\d])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return strongPasswordRegex.test(password);
   }
+
+  React.useEffect(()=>{
+    const isLogin = localStorage.getItem("isLogin")
+  return (
+    isLogin === null ? navigate("/login") :navigate("/")
+  )
+  },[])
 
   return (
     <ThemeProvider theme={defaultTheme}>
