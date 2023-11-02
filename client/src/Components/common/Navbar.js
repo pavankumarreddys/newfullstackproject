@@ -38,6 +38,19 @@ function Navbar() {
               Career
             </a>
           </li>
+          <li>
+          <Button
+            onClick={(e) => {
+              console.log("out");
+              localStorage.removeItem("isLogin");
+              navigate('/login');
+            }}
+            variant="contained"
+            endIcon={<LogoutIcon />}
+          >
+            Logout
+          </Button>
+          </li>
           </ul>
           
         </div>
